@@ -8,6 +8,27 @@ library(DT)
 #define data
 data=matrix(c(524792,743057,745282,0,798502,995659,0,0,917636,0,0,0),3,4,byrow=T)
 
+### a custom table container
+
+sketch = htmltools::withTags(table(
+  class = 'display',
+  thead(
+    
+    tr(
+      th(rowspan = 2, 'Loss Year'),
+      th(colspan = 2, ''),
+      th(colspan=4,'Development Year')
+    ),
+    tr(
+      lapply(c(1,2,3,4), th)
+      )
+    )
+  )
+  
+  )
+
+
+
 
 
 # Define UI
@@ -112,30 +133,5 @@ server <- function(input,output){
 # Create Shiny Objects
 shinyApp(ui=ui, server=server)
 
-??renderDataTable
-'data=matrix(c(524792,743057,745282,0,798502,995659,0,0,917636,0,0,0),3,4,byrow=T)
-
-data=as.data.frame(data,col.names=c(2017,2018,2019),row.names=c(1,2,3))
-data
-'
-
-# a custom table container
-
-sketch = htmltools::withTags(table(
-  class = 'display',
-  thead(
-    
-    tr(
-      th(rowspan = 2, 'Loss Year'),
-      th(colspan = 2, ''),
-      th(colspan=4,'Development Year')
-    ),
-    tr(
-      lapply(c(1,2,3,4), th)
-      )
-    )
-  )
-  
-  )
 
 
